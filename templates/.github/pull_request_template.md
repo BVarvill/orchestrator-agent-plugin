@@ -41,7 +41,7 @@
 <Lines of production code / tests / tooling / docs, and why that size is needed. Name any change outside the order's files and why.>
 
 ## 9. Learned
-<Hard facts about the inputs, each with a source. Promoted to TRAPS.md at merge.>
+<Hard facts about the inputs, each with a source. Recorded as data at merge.>
 
 ## 10. Decided
 <Lasting choices, with the option rejected. Promoted to DECISIONS.md at merge. Say "proposed, not decided" where Ben must rule.>

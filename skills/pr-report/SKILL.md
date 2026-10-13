@@ -38,7 +38,7 @@ If Ben could not explain the change in his own words from this box, the PR is no
 6. **Code review guide:** the 2 to 5 files that matter, in reading order, one line each.
 7. **Verification:** `make check`, CI link, any live check, and **what these do not prove**.
 8. **Patch size:** production code versus tests, tooling and docs. A big diff needs a reason. Name every file outside the order.
-9. **Learned:** hard facts about the inputs, each with a source (go to TRAPS.md).
+9. **Learned:** hard facts about the inputs, each with a source (recorded as data at merge).
 10. **Decided:** lasting choices with the option rejected (go to DECISIONS.md). Write "proposed, not decided" where Ben must rule.
 
 ## Rules

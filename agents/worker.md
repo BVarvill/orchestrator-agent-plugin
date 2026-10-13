@@ -30,6 +30,14 @@ Build, verify, attack, fix, repeat.
 - Use the cheapest way to wait: one blocking command, never a sleep-and-check loop.
 - No AI co-author line in commits. No em dashes.
 
+## How to write (your PR and final message)
+
+- **Answer first.** Plain words. Short sentences, one idea each.
+- **Bullets, not paragraphs.** Bold the key phrase in each.
+- **Define a technical term** in brackets the first time.
+- **No italics, no runs of capitals, no em dashes.** Use a plain dash "-".
+- **Small tables only.** End a long write-up with "In short:" and 2 or 3 bullets.
+
 ## Finish
 
 1. Run the project's check (`make check`, or the lint and test commands in CLAUDE.md). Green.

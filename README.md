@@ -15,12 +15,15 @@ Ben decides what gets built and says "integrate".
 | Skill | diagnose | Find the real cause before fixing a bug |
 | Skill | cost-guard | Model and effort per job, no polling, small context |
 | Skill | bearings | Where the project stands, from a script |
+| Skill | record | Records data about the work, one line per event |
+| Skill | what-are-we-missing | A short blind-spot check before orders, merges and live writes |
 | Skill | project-setup | Start a new repo the orchestrator way |
 | Agent | worker | Builds one order, sonnet by default |
 | Agent | reviewer | Cold read-only PR review, sonnet (opus for red tier) |
 | Agent | scout | Read-only research, haiku |
 | Rules | CORE.md | Always-on rules: how to write, ask for decisions, behave, cost |
 | Hook | SessionStart | Loads CORE.md and a status digest, only in repos with PLAN.md and orders/ |
+| Hook | SubagentStop, SessionEnd | Records each agent run and session, with model and token totals (no model call) |
 
 Skills load only when their description matches the task, so they cost almost nothing until used.
 

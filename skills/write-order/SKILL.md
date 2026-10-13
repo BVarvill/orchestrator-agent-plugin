@@ -12,6 +12,8 @@ One order is one job for one worker. Save it as `orders/<ID>.md`, add it to PLAN
 - Check the work needs a worker at all (`orchestrate`, "When not to spawn").
 - Read the code the order touches. Name real files and functions, not guesses.
 - Pick the tier (green, amber, red) and the model (`cost-guard`).
+- Run `what-are-we-missing` on the plan.
+- After saving: `record.py order_written "<intent>" --order <ID> --data tier=<tier> model=<model>`.
 
 ## The template
 

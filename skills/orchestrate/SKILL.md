@@ -18,18 +18,18 @@ GitHub is the record: every piece of work arrives as a pull request (PR) with gr
 
 1. Ben describes what he wants.
 2. Decide: is a worker needed at all? (see "When not to spawn" below)
-3. Write the order with the `write-order` skill. Add it to the board in PLAN.md.
+3. Run `what-are-we-missing`. Then write the order with the `write-order` skill. Add it to the board in PLAN.md.
 4. Launch the worker (the `worker` agent, `isolation: worktree`, in the background), or give Ben a short prompt to paste into a new window. Say which, and why.
 5. While it runs, do other work or stop. **Never poll.** You are told when it finishes.
 6. On the worker's report: run the `verify-merge` skill. Never trust the report alone.
-7. Merge only on "integrate" (or standing permission). Promote "Decided" to DECISIONS.md and "Learned" to TRAPS.md. Update the board.
+7. Merge only on "integrate" (or standing permission). Promote "Decided" to DECISIONS.md. Record the merge and any "Learned" facts (`record` skill). Update the board.
 
 ## Documents and who writes them
 
 | File | Writer |
 |---|---|
 | CLAUDE.md, WORKFLOW.md, PLAN.md, DECISIONS.md, orders/*.md | orchestrator only |
-| TRAPS.md | workers add on their branch; add-only |
+| records/events.jsonl | anyone, append-only, through the `record` skill and the hooks |
 | The PR description | the worker; its only report |
 
 Why one writer: a decision written before it merges can turn out false. Written at merge, the docs never describe something that did not happen.
@@ -90,4 +90,4 @@ Follow `${CLAUDE_PLUGIN_ROOT}/CORE.md` (loaded at session start in orchestrator 
 
 ## Related skills
 
-`write-order`, `verify-merge`, `pr-report`, `diagnose`, `cost-guard`, `bearings`, `project-setup`.
+`write-order`, `verify-merge`, `record`, `what-are-we-missing`, `pr-report`, `diagnose`, `cost-guard`, `bearings`, `project-setup`.

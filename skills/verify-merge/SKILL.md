@@ -17,7 +17,8 @@ Never trust the report alone. A wrong assumption at the merge seat is still wron
 6. **Re-run any check CI does not cover**, from a clean tree.
 7. **The report meets the `pr-report` standard.** If the six-line box would not let Ben explain the change in his own words, send it back.
 8. **Red tier:** the `reviewer` agent's cold read, and the dry-run evidence.
-9. **Private data.** No customer names or real records in the diff, commits or PR text.
+9. **Run `what-are-we-missing`** on the PR. Act on any real gap before merging.
+10. **Private data.** No customer names or real records in the diff, commits or PR text.
 
 ## Merging
 
@@ -27,14 +28,14 @@ Never trust the report alone. A wrong assumption at the merge seat is still wron
 ## After merging (do not skip)
 
 1. **Promote "Decided"** into DECISIONS.md: the decision, at least two rejected options, the reversal condition.
-2. **Promote "Learned"** into TRAPS.md, each fact with its source.
+2. **Record it** (`record` skill): `pr_merged`, plus one `learned` line per hard fact in the PR's "Learned" section, each with its source.
 3. **File every open question.** A review is not finished while a question in the PR has no home. Put each one on the board or in the order it belongs to, linked to the PR.
 4. **Update PLAN.md**: move the order to Done.
 5. **Tell Ben**, short: merged, what it means for him, what (if anything) he must decide.
 
 ## Sending a PR back
 
-Send it back to the same worker (continue it, do not start fresh) with a numbered list: what is wrong, where, and what "fixed" looks like.
+Record it (`pr_sent_back`, with the reason). Send it back to the same worker (continue it, do not start fresh) with a numbered list: what is wrong, where, and what "fixed" looks like.
 Fixing it yourself is fine only for a trivial in-scope slip, and you say so.
 
 ## Clean up

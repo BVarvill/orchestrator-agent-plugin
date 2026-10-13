@@ -25,7 +25,7 @@ Read this and CLAUDE.md before any work.
 4. It stops when every definition-of-perfect clause has evidence, or it is blocked, or the same failure survives three fixes.
 5. It runs `make check`, opens the PR, ends with "PR #N is open - say 'integrate' in the orchestrator window".
 6. Ben says "integrate".
-7. The orchestrator re-checks everything itself, merges, promotes "Decided" into DECISIONS.md and "Learned" into TRAPS.md.
+7. The orchestrator re-checks everything itself, merges, promotes "Decided" into DECISIONS.md, and records the merge and any "Learned" facts in records/events.jsonl.
 
 ## The pull request
 
