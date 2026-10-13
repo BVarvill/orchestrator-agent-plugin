@@ -1,4 +1,4 @@
-# orchestrator: Ben's way of working, as a Claude Code plugin
+# orchestrator-agent-plugin: Ben's way of working, as a Claude Code plugin
 
 One orchestrator session plans, writes orders, verifies and merges.
 Workers build one order each in their own git worktree and report by pull request.
@@ -32,19 +32,19 @@ Skills load only when their description matches the task, so they cost almost no
 In Claude Code:
 
 ```
-/plugin marketplace add BVarvill/orchestrator-plugin
-/plugin install orchestrator@bvarvill
+/plugin marketplace add BVarvill/orchestrator-agent-plugin
+/plugin install orchestrator-agent-plugin@bvarvill
 ```
 
-Or clone it into `~/.claude/skills/orchestrator/`, where it loads in every session as `orchestrator@skills-dir`.
+Or clone it into `~/.claude/skills/orchestrator-agent-plugin/`, where it loads in every session as `orchestrator-agent-plugin@skills-dir`.
 
 Then, in a project, ask for "set this project up the orchestrator way" (the `project-setup` skill).
 The rules switch on in any repo that has a `PLAN.md` and an `orders/` folder.
 
 ## Manage it
 
-Turn it off: `claude plugin disable orchestrator@skills-dir`.
-Its own token cost: `claude plugin details orchestrator`.
+Turn it off: `claude plugin disable orchestrator-agent-plugin@skills-dir`.
+Its own token cost: `claude plugin details orchestrator-agent-plugin`.
 
 ## Ideas taken from firstmate (github.com/kunchenguid/firstmate)
 

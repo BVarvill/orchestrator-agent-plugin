@@ -6,7 +6,7 @@
   },
   "plugins": [
     {
-      "name": "orchestrator",
+      "name": "orchestrator-agent-plugin",
       "source": "./",
       "description": "Ben's orchestrator method: one orchestrator plans, writes orders, verifies and merges; workers build in their own worktrees and report by PR. Cost-conscious by default."
     }
