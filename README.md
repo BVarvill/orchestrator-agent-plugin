@@ -19,13 +19,27 @@ Ben decides what gets built and says "integrate".
 | Agent | worker | Builds one order, sonnet by default |
 | Agent | reviewer | Cold read-only PR review, sonnet (opus for red tier) |
 | Agent | scout | Read-only research, haiku |
-| Hook | SessionStart | Prints the bearings digest, only in repos with PLAN.md and orders/ |
+| Rules | CORE.md | Always-on rules: how to write, ask for decisions, behave, cost |
+| Hook | SessionStart | Loads CORE.md and a status digest, only in repos with PLAN.md and orders/ |
 
 Skills load only when their description matches the task, so they cost almost nothing until used.
 
-## Where it lives
+## Install
 
-`~/.claude/skills/orchestrator/` loads in every session as `orchestrator@skills-dir`.
+In Claude Code:
+
+```
+/plugin marketplace add BVarvill/orchestrator-plugin
+/plugin install orchestrator@bvarvill
+```
+
+Or clone it into `~/.claude/skills/orchestrator/`, where it loads in every session as `orchestrator@skills-dir`.
+
+Then, in a project, ask for "set this project up the orchestrator way" (the `project-setup` skill).
+The rules switch on in any repo that has a `PLAN.md` and an `orders/` folder.
+
+## Manage it
+
 Turn it off: `claude plugin disable orchestrator@skills-dir`.
 Its own token cost: `claude plugin details orchestrator`.
 
