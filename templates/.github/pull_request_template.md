@@ -43,5 +43,8 @@
 ## 9. Learned
 <Hard facts about the inputs, each with a source. Recorded as data at merge.>
 
-## 10. Decided
+## 10. Data saved
+<Each finding, metric and saved data file, with its record line or path. Private data saved with --private, never in git.>
+
+## 11. Decided
 <Lasting choices, with the option rejected. Promoted to DECISIONS.md at merge. Say "proposed, not decided" where Ben must rule.>

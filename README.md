@@ -15,7 +15,8 @@ Ben decides what gets built and says "integrate".
 | Skill | diagnose | Find the real cause before fixing a bug |
 | Skill | cost-guard | Model and effort per job, no polling, small context |
 | Skill | bearings | Where the project stands, from a script |
-| Skill | record | Records data about the work, one line per event |
+| Skill | record | Records data about the work and its subject: events, findings, saved data files |
+| Skill | recall | "What did we do earlier about X?" from records, saved data, decisions, then old chats |
 | Skill | what-are-we-missing | A short blind-spot check before orders, merges and live writes |
 | Skill | project-setup | Start a new repo the orchestrator way |
 | Agent | worker | Builds one order, sonnet by default |

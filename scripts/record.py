@@ -9,11 +9,17 @@ Over time that file answers questions no one thought to ask at the start:
   - How long from order to merge?
   - What did Ben rule, in his own words, and when?
 
-Two ways in:
+Three ways in:
   1. By hand (the `record` skill), at the moments listed there:
        record.py ruling "Two leads per org, never three" --order O28
        record.py metric "golden accuracy" --data value=0.91 n=297
-  2. Automatically, from hooks (no model call, no tokens):
+  2. Keep a data file that took effort to make (a query result, a table):
+       record.py save path/to/table.csv "Reply rates by year, 2024-2026"
+       record.py save notes.json "Raw lead list" --private
+     The file is COPIED into records/data/ (committed) or records/private/
+     (never committed: the script keeps records/.gitignore), and a
+     data_saved line points to it with its size, rows and checksum.
+  3. Automatically, from hooks (no model call, no tokens):
        record.py --hook subagent   (SubagentStop: one line per agent run,
                                     with its model and token totals)
        record.py --hook session    (SessionEnd: one line per session)
@@ -42,6 +48,8 @@ KINDS = {
     "ruling": "Ben ruled on something, in his own words",
     "decision": "a lasting choice (also goes in DECISIONS.md)",
     "learned": "a hard fact about the inputs, with its source",
+    "finding": "a fact or number discovered about the project's subject, with its source",
+    "data_saved": "a data file kept in records/data or records/private (use: record.py save)",
     "gap": "something we were missing, found by what-are-we-missing",
     "metric": "a measured number (accuracy, cost, time, count)",
     "incident": "something went wrong, and what happened",
@@ -116,6 +124,7 @@ def from_hook(which: str) -> None:
             append(root, {"kind": "agent_run",
                           "agent_type": data.get("agent_type", "unknown"),
                           "agent_id": data.get("agent_id", ""),
+                          "transcript": transcript,
                           "session_id": data.get("session_id", ""),
                           "usage": usage_from_transcript(transcript) if transcript else {}})
         elif which == "session":
@@ -123,15 +132,61 @@ def from_hook(which: str) -> None:
             append(root, {"kind": "session",
                           "session_id": data.get("session_id", ""),
                           "reason": data.get("reason", ""),
+                          "transcript": transcript,
                           "cwd": os.path.basename(data.get("cwd", "") or ""),
                           "usage": usage_from_transcript(transcript) if transcript else {}})
     except Exception:  # noqa: BLE001 - recording is best effort in hooks
         return
 
 
+def save(argv: list[str]) -> None:
+    """Copy a data file into records/data (or records/private) and log it."""
+    import hashlib
+    import shutil
+    ap = argparse.ArgumentParser(prog="record.py save",
+                                 description="Keep a data file and record that it was kept")
+    ap.add_argument("path")
+    ap.add_argument("summary", help="what the data is, one plain line, no private data")
+    ap.add_argument("--private", action="store_true",
+                    help="holds private data: goes to records/private/, never committed")
+    ap.add_argument("--order", default="")
+    a = ap.parse_args(argv)
+    src = Path(a.path)
+    if not src.is_file():
+        sys.exit(f"no such file: {src}")
+    root = repo_root()
+    if root is None:
+        sys.exit("not inside a git repo: nothing saved")
+    records = root / "records"
+    records.mkdir(exist_ok=True)
+    ignore = records / ".gitignore"
+    if "private/" not in (ignore.read_text() if ignore.exists() else ""):
+        with ignore.open("a") as f:
+            f.write("private/\n")
+    folder = records / ("private" if a.private else "data")
+    folder.mkdir(exist_ok=True)
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S")
+    dest = folder / f"{stamp}-{src.name}"
+    shutil.copy2(src, dest)
+    raw = dest.read_bytes()
+    rows = raw.count(b"\n")
+    event = {"kind": "data_saved", "summary": a.summary,
+             "path": str(dest.relative_to(root)), "private": a.private,
+             "bytes": len(raw), "rows": rows,
+             "sha256": hashlib.sha256(raw).hexdigest()[:16]}
+    if a.order:
+        event["order"] = a.order
+    append(root, event)
+    print(f"saved {dest.relative_to(root)} ({len(raw)} bytes, {rows} lines)"
+          + (" - private, not committed" if a.private else ""))
+
+
 def main() -> None:
     if len(sys.argv) >= 3 and sys.argv[1] == "--hook":
         from_hook(sys.argv[2])
+        return
+    if len(sys.argv) >= 2 and sys.argv[1] == "save":
+        save(sys.argv[2:])
         return
     ap = argparse.ArgumentParser(description="Record one event to records/events.jsonl")
     ap.add_argument("kind", help="one of: " + ", ".join(KINDS))

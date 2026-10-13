@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
   "name": "orchestrator-agent-plugin",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Ben's orchestrator method: one orchestrator plans, writes orders, verifies and merges; workers build in their own worktrees and report by PR. Cost-conscious by default.",
   "author": {
     "name": "Ben Varvill",

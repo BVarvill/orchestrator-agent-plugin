@@ -90,4 +90,4 @@ Follow `${CLAUDE_PLUGIN_ROOT}/CORE.md` (loaded at session start in orchestrator 
 
 ## Related skills
 
-`write-order`, `verify-merge`, `record`, `what-are-we-missing`, `pr-report`, `diagnose`, `cost-guard`, `bearings`, `project-setup`.
+`write-order`, `verify-merge`, `record`, `recall`, `what-are-we-missing`, `pr-report`, `diagnose`, `cost-guard`, `bearings`, `project-setup`.

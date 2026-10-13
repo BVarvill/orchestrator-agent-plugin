@@ -17,8 +17,9 @@ Never trust the report alone. A wrong assumption at the merge seat is still wron
 6. **Re-run any check CI does not cover**, from a clean tree.
 7. **The report meets the `pr-report` standard.** If the six-line box would not let Ben explain the change in his own words, send it back.
 8. **Red tier:** the `reviewer` agent's cold read, and the dry-run evidence.
-9. **Run `what-are-we-missing`** on the PR. Act on any real gap before merging.
-10. **Private data.** No customer names or real records in the diff, commits or PR text.
+9. **Data kept.** The order's "Data to keep" is answered in the PR's "Data saved", and the files and record lines exist.
+10. **Run `what-are-we-missing`** on the PR. Act on any real gap before merging.
+11. **Private data.** No customer names or real records in the diff, commits or PR text.
 
 ## Merging
 

@@ -39,6 +39,9 @@ Tier: **<green|amber|red>**. Model: **<haiku|sonnet|opus>**, effort **<low|mediu
 2. ...
 N. `make check` green; CI green and actually ran.
 
+## Data to keep
+<What this job will produce that is worth keeping: findings, numbers, tables. Say where each goes: `finding`, `metric`, or `record.py save` (with `--private` for private data). Write "none" only if truly none.>
+
 ## What it must NOT do
 <The tempting wrong moves, named.>
 

@@ -17,24 +17,25 @@ Most will have a quick "covered" answer. The point is the one or two that do not
 **The data**
 3. What data have we not looked at that could change the answer?
 4. Is the data stale, partial, or measured on the same cases we tuned on?
-5. Is there a past record (`records/events.jsonl`, DECISIONS.md) that already answers this?
+5. Is there a past record that already answers this? (run `recall`)
+6. What data is this work producing that we should keep? (`record`)
 
 **The assumptions**
-6. What are we taking as true without checking it?
-7. What would have to be true for this plan to be wrong?
-8. Have we confused "the tests pass" with "it works for the user"?
+7. What are we taking as true without checking it?
+8. What would have to be true for this plan to be wrong?
+9. Have we confused "the tests pass" with "it works for the user"?
 
 **The edges**
-9. What happens with empty input, a duplicate, a very large case, or a strange name?
-10. What happens if it runs twice, or stops halfway?
+10. What happens with empty input, a duplicate, a very large case, or a strange name?
+11. What happens if it runs twice, or stops halfway?
 
 **The people and systems**
-11. Who or what else does this touch: a live system, a colleague, a customer?
-12. How would we undo it?
+12. Who or what else does this touch: a live system, a colleague, a customer?
+13. How would we undo it?
 
 **The cost**
-13. Is there a cheaper way that is just as good?
-14. Is an agent the wrong answer here? Would a rule or a script do?
+14. Is there a cheaper way that is just as good?
+15. Is an agent the wrong answer here? Would a rule or a script do?
 
 ## The output
 
