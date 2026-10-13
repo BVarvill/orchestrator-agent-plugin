@@ -51,7 +51,7 @@ Spend where judgment matters. Do mechanics with scripts. Never pay to wait.
 
 ## 6. Know what you spent
 
-- `claude plugin details orchestrator` shows this plugin's own token cost.
+- `claude plugin details orchestrator-agent-plugin` shows this plugin's own token cost.
 - Every model call in a product has a spending cap.
 - Evals run with a hard limit (`claude plugin eval ... --max-cost-usd 2`).
 - In a worker's report, under operational evidence: roughly what it cost, if known.
