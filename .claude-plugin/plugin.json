@@ -1,0 +1,10 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "orchestrator",
+  "version": "0.1.0",
+  "description": "Ben's orchestrator method: one orchestrator plans, writes orders, verifies and merges; workers build in their own worktrees and report by PR. Cost-conscious by default.",
+  "author": {
+    "name": "Ben Varvill",
+    "email": "ben.varvill1@gmail.com"
+  }
+}

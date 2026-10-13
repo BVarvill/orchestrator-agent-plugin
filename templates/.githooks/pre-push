@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Runs the project's check before any push. Enable once per clone with:
+#   git config core.hooksPath .githooks
+set -e
+echo "pre-push: make check"
+make check
